@@ -31,6 +31,7 @@ const sendResponse = async (req, res) => {
             visitor_name = visitor_name.replace(/^['"](.*)['"]$/, '$1');
         }
         const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        console.log(ip);
 
         const location = await getGeolocation(ip);
         if (!location || !location.loc) {
