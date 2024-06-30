@@ -14,7 +14,7 @@ app.set('trust proxy', true)
 app.use('/api', apiRoutes);
 
 app.get('/', (req, res) => {
-    res.send("Hello");
+    res.status(200).json("Hello, server is up and running");
 })
 
 app.listen(process.env.PORT, () => {
