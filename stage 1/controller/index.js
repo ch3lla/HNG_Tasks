@@ -30,7 +30,9 @@ const sendResponse = async (req, res) => {
         if (visitor_name) {
             visitor_name = visitor_name.replace(/^['"](.*)['"]$/, '$1');
         }
-        const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        const ipList = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        const ips = ipList.split(',').map(ip => ip.trim());
+        const ip = ips[0]
         console.log(ip);
 
         const location = await getGeolocation(ip);
