@@ -27,6 +27,11 @@ const getWeather = async (lat, lon) => {
 const sendResponse = async (req, res) => {
     try {
         let { visitor_name } = req.query;
+
+        if (!visitor_name || visitor_name == undefined){
+          throw new Error('Visitor name is undefined');
+        }
+
         if (visitor_name) {
             visitor_name = visitor_name.replace(/^['"](.*)['"]$/, '$1');
         }
