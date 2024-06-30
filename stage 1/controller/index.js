@@ -50,7 +50,7 @@ const sendResponse = async (req, res) => {
             "greeting": `Hello, ${visitor_name}!, the temperature is ${weather.main.temp} degrees Celcius in ${location.city}`
         }
     
-        res.json(response);
+        res.status(200).json(response);
     } catch (error){
         console.error('Error:', error);
         res.status(500).json({ error: 'An error occurred', details: error.message });
